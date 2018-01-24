@@ -1,37 +1,83 @@
-pipelineJob('Pipeline02') {
+import groovy.util.*
 
-    def repo = 'https://bitbucket.org/kcrane/jhipster-basic-micro-mongo.git'
+//need to read in xml as there is not an option to set script path for multipipelineJob at this time
+def getFactoryNode(){
+    def factorySource='''
+    <factory class="org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory">
+        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+        <scriptPath>jenkinsfiles/Jenkinsfile</scriptPath>
+    </factory>'''
 
-    definition {
-        scm {
-            git {
-                remote { url(repo) }
-                branches('master')
-                scriptPath('Jenkinsfile')
-                extensions { }  // required as otherwise it may try to tag the repo, which you may not want
+    def factoryNode= new XmlParser().parseText(factorySource)
+
+    return factoryNode
+}
+
+def getTriggerNode(){
+    def triggersSource='''
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+        <triggers>
+            <hudson.triggers.SCMTrigger>
+                <spec>H/5 * * * *</spec>
+                <ignorePostCommitHooks>false></ignorePostCommitHooks>
+            </hudson.triggers.SCMTrigger>
+        </triggers>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+    '''
+
+    def triggerNode = new XmlParser().parseText(triggersSource)
+
+    return triggerNode
+}
+
+def getPipelineConfig(){
+
+    def slurper = new ConfigSlurper()
+    def workspacePath = "${new File(__FILE__).parent}"
+    def pipelineConfigPath = workspacePath + "/pipeline-config.groovy"
+    def config = slurper.parse(readFileFromWorkspace(pipelineConfigPath))
+
+    return config.pipelineConfig
+}
+
+def buildTestPipeline(pipelineConfig, service){
+    def factoryNpde = getFactoryNode()
+    def triggerNode = getTriggerNode()
+
+    println(triggerNode)
+
+    multibranchPipelineJob(service.testName) {
+        branchSources{
+            git{
+                remote(service.repository)
+                includes('*')
             }
         }
-        parameters {
-            passwordParameterDefinition {
-                name('SECRET_ACCESS_KEY')
-                defaultValue(null)
-                description('')
-            }
-            gitParameterDefinition {
-                name('branch_selector')
-                type('PT_BRANCH_TAG')
-                defaultValue('origin/master')
-                description('')
-                branch('')
-                branchFilter('.*')
-                tagFilter('*')
-                sortMode('ASCENDING')
-                selectedValue('DEFAULT')
-                useRepository('')
-                quickFilterEnabled(false)
+        orphanedItemStrategy{
+            discardOldItems{
+                numToKeep(pipelineConfig.logRotator.numToKeep)
             }
         }
+        triggers{
+            bitbucketPush()
+        }
+        configure { project ->
+            project << triggerNode
+        }
+        configure { project ->
+            project << factoryNode
+        }
+
     }
 }
 
+def buildPipelineJobs(){
 
+    def pipelineConfig = getPipelineConfig()
+
+    pipelineConfig.services.each{ service, data ->
+        buildTestPipeline(pipelineConfig, data)
+    }
+}
+
+buildPipelineJobs()
