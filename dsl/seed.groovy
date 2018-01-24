@@ -58,9 +58,9 @@ def buildTestPipeline(pipelineConfig, service){
                 numToKeep(pipelineConfig.logRotator.numToKeep)
             }
         }
-        triggers{
-            bitbucketPush()
-        }
+//        triggers{
+//            bitbucketPush()
+//        }
         configure { project ->
             project << triggerNode
         }
