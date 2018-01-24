@@ -33,14 +33,9 @@ pipelineConfig {
     }
     services {
         micro1 {
-            jobName = "jhipster-basic-micro-mongo"
-            testName = "jhipster-basic-micro-mongo-test"
-            repository = "https://bitbucket.org/kcrane/jhipster-basic-micro-mongo.git"
-        }
-        micro2 {
-            jobName = "jhipster-basic-micro-mongo2"
-            testName = "jhipster-basic-micro-mongo2-test"
-            repository = "https://bitbucket.org/kcrane/jhipster-basic-micro-mongo.git"
+            jobName = "jhipster-basic-mono-micro"
+            testName = "jhipster-basic-mono-micro-test"
+            repository = "https://github.com/kcrane3576/pocMonolith.git"
         }
     }
 
