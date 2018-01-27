@@ -2,17 +2,17 @@
 import groovy.json.*
 
 void getJenkinsfileConfig() {
-    def serviceConfigDirectory = "../service-config/"
-    def serviceConfigPath = serviceConfigDirectory + "general-config.json"
+//    def serviceConfigDirectory = "../service-config/"
+//    def serviceConfigPath = serviceConfigDirectory + "general-config.json"
 
-    def workspacePath = "${new File(__FILE__).parent}"
-    println(workspacePath)
+    def genConf = libraryResource "../service-config/general-config.json"
+    println(genConf)
 
-    def jsonSlurper = new JsonSlurper()
-    def data = jsonSlurper.parseText(new File(serviceConfigPath).text)
-    for(String key : data){
-        println(key)
-    }
+//    def jsonSlurper = new JsonSlurper()
+//    def data = jsonSlurper.parseText(new File(serviceConfigPath).text)
+//    for(String key : data){
+//        println(key)
+//    }
 }
 
 def checkout(){
@@ -22,6 +22,8 @@ def checkout(){
             sh('ls -a')
         }
     }
+
+    x
 
     getJenkinsfileConfig()
 }
