@@ -5,6 +5,9 @@ void getJenkinsfileConfig() {
     def serviceConfigDirectory = "../service-config/"
     def serviceConfigPath = serviceConfigDirectory + "general-config.json"
 
+    def workspacePath = "${new File(__FILE__).parent}"
+    println(workspacePath)
+
     def jsonSlurper = new JsonSlurper()
     def data = jsonSlurper.parseText(new File(serviceConfigPath).text)
     for(String key : data){
