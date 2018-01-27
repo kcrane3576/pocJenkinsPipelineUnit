@@ -1,4 +1,4 @@
-def gitCheckout(){
+def checkout(){
     sh('ls -a')
 
 //    node{
