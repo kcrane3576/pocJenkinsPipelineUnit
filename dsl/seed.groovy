@@ -75,9 +75,12 @@ def buildTestPipeline(pipelineConfig, service){
 
     multibranchPipelineJob(service.testName) {
         branchSources{
-            git{
-                remote(service.repository)
-                includes('*')
+//            git{
+//                remote(service.repository)
+//                includes('*')
+//            }
+            github{
+                apiUri(service.repository)
             }
         }
         orphanedItemStrategy{
