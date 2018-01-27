@@ -23,7 +23,5 @@ def checkout(){
         }
     }
 
-    x
-
     getJenkinsfileConfig()
 }
