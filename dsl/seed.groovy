@@ -75,12 +75,10 @@ def buildTestPipeline(pipelineConfig, service){
 
     multibranchPipelineJob(service.testName) {
         branchSources{
-//            git{
-//                remote(service.repository)
-//                includes('*')
-//            }
-            github{
-                repository(service.repository)
+            git{
+                remote(service.repository)
+                includes('*')
+                credentialsId('GITHUB_CREDENTIALS_ID')
             }
 
         }
