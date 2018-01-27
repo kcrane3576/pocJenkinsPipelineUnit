@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def checkout(){
     sh('ls -a')
 
