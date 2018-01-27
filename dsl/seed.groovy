@@ -108,5 +108,3 @@ def buildPipelineJobs(){
 }
 
 buildPipelineJobs()
-
-getServiceConfig("general-config.json")
