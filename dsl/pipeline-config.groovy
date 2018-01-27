@@ -33,8 +33,8 @@ pipelineConfig {
     }
     services {
         micro1 {
-            jobName = "jhipster-basic-mono-micro"
-            testName = "jhipster-basic-mono-micro-test"
+            jobName = "pocMonolith"
+            testName = "pocMonolith-test"
             repository = "https://github.com/kcrane3576/pocMonolith.git"
         }
     }
