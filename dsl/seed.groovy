@@ -1,4 +1,20 @@
 import groovy.util.*
+import groovy.json.*
+
+def getServiceConfig(String fileName){
+
+    def serviceConfigPath = "../service-config/"
+    def pathToFile = serviceConfigPath + fileName
+
+    def jsonSlurper = new JsonSlurper()
+    def reader = new BufferedReader(new InputStreamReader(new FileInputStream(pathToFile), "UTF-8"))
+    def json = jsonSlurper.parse(reader)
+    for (Object key: json) {
+        println(key)
+    }
+
+
+}
 
 //need to read in xml as there is not an option to set script path for multipipelineJob at this time
 def getFactoryNode(){
@@ -81,3 +97,5 @@ def buildPipelineJobs(){
 }
 
 buildPipelineJobs()
+
+getServiceConfig("general-config.json")
