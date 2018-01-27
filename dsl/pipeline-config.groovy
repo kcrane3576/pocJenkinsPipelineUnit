@@ -1,7 +1,7 @@
 pipelineConfig {
     definition {
         scm {
-            scriptPath = "Jenkinsfile"
+            scriptPath = "jenkinsfiles/Jenkinsfile"
             branch = "master"
         }
     }
