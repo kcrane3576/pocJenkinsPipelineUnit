@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 package main.groovy.org.cranek.v1;
 
 def checkout(){
