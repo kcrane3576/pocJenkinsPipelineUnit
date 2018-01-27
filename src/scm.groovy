@@ -1,5 +1,5 @@
 def gitCheckout(){
-    sh(ls -a)
+    sh('ls -a')
 
 //    node{
 //        stage("checkout"){
