@@ -1,61 +1,4 @@
 import groovy.util.*
-import groovy.json.*
-
-def getServiceConfig(String fileName){
-
-    def serviceConfigPath = "../service-config/"
-    def pathToFile = serviceConfigPath + fileName
-
-
-    //executing shell command
-    def sout = new StringBuilder(), serr = new StringBuilder()
-    def proc = 'ls -a'.execute()
-    proc.consumeProcessOutput(sout, serr)
-    proc.waitForOrKill(1000)
-    println(sout)
-
-    //Checking current directory
-    def currentDir = new File(".").getAbsolutePath()
-    println currentDir
-
-    def jsonSlurper = new JsonSlurper()
-    def json = jsonSlurper.parseText(new File(pathToFile).text)
-    for (Object key: json) {
-        println(key)
-    }
-
-
-}
-
-//need to read in xml as there is not an option to set script path for multipipelineJob at this time
-def getFactoryNode(){
-    def factorySource='''
-    <factory class="org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory">
-        <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
-        <scriptPath>jenkinsfiles/Jenkinsfile</scriptPath>
-    </factory>'''
-
-    def factoryNode= new XmlParser().parseText(factorySource)
-
-    return factoryNode
-}
-
-def getTriggerNode(){
-    def triggersSource='''
-    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
-        <triggers>
-            <hudson.triggers.SCMTrigger>
-                <spec>H/5 * * * *</spec>
-                <ignorePostCommitHooks>false></ignorePostCommitHooks>
-            </hudson.triggers.SCMTrigger>
-        </triggers>
-    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
-    '''
-
-    def triggerNode = new XmlParser().parseText(triggersSource)
-
-    return triggerNode
-}
 
 def getPipelineConfig(){
 
@@ -65,38 +8,55 @@ def getPipelineConfig(){
     def config = slurper.parse(readFileFromWorkspace(pipelineConfigPath))
 
     return config.pipelineConfig
+
 }
 
-def buildTestPipeline(pipelineConfig, service){
-    def factoryNpde = getFactoryNode()
-    def triggerNode = getTriggerNode()
+def buildPipeline(pipelineConfig, service){
 
-    println(triggerNode)
+    pipelineJob(service.jobName) {
 
-    multibranchPipelineJob(service.testName) {
-        branchSources{
-            git{
-                remote(service.repository)
-                includes('*')
-                credentialsId('GITHUB_CREDENTIALS_ID')
-            }
+        definition {
+            cpsScm{
+                scm {
+                    git {
 
-        }
-        orphanedItemStrategy{
-            discardOldItems{
-                numToKeep(pipelineConfig.logRotator.numToKeep)
+                        remote { url(service.repository) }
+                        branches(pipelineConfig.definition.scm.branch)
+                        extensions { }  // required as otherwise it may try to tag the repo, which you may not want
+
+                    }
+                }
+                scriptPath(pipelineConfig.definition.scm.scriptPath)
             }
         }
-//        triggers{
-//            bitbucketPush()
-//        }
-        configure { project ->
-            project << triggerNode
-        }
-        configure { project ->
-            project << factoryNode
-        }
+        parameters {
+            passwordParameterDefinition {
 
+                def passwordParameterDefinition = pipelineConfig.parameters.passwordParameterDefinition
+
+                name(pipelineConfig.parameters.passwordParameterDefinition.name)
+                defaultValue(passwordParameterDefinition.defaultValue)
+                description(passwordParameterDefinition.description)
+
+            }
+            gitParameterDefinition {
+
+                def gitParameterDefinition = pipelineConfig.parameters.gitParameterDefinition
+
+                name(gitParameterDefinition.name)
+                type(gitParameterDefinition.type)
+                defaultValue(gitParameterDefinition.defaultValue)
+                description(gitParameterDefinition.description)
+                branch(gitParameterDefinition.branch)
+                branchFilter(gitParameterDefinition.branchFilter)
+                tagFilter(gitParameterDefinition.tagFilter)
+                sortMode(gitParameterDefinition.sortMode)
+                selectedValue(gitParameterDefinition.selectedValue)
+                useRepository(gitParameterDefinition.useRepository)
+                quickFilterEnabled(gitParameterDefinition.quickFilterEnabled)
+
+            }
+        }
     }
 }
 
@@ -105,8 +65,9 @@ def buildPipelineJobs(){
     def pipelineConfig = getPipelineConfig()
 
     pipelineConfig.services.each{ service, data ->
-        buildTestPipeline(pipelineConfig, data)
+        buildPipeline(pipelineConfig, data)
     }
+
 }
 
 buildPipelineJobs()
