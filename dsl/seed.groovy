@@ -7,6 +7,13 @@ def getServiceConfig(String fileName){
     def pathToFile = serviceConfigPath + fileName
 
 
+    //executing shell command
+    def sout = new StringBuilder(), serr = new StringBuilder()
+    def proc = 'ls -a'.execute()
+    proc.consumeProcessOutput(sout, serr)
+    proc.waitForOrKill(1000)
+    println(sout)
+
     //Checking current directory
     def currentDir = new File(".").getAbsolutePath()
     println currentDir
