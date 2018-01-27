@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+import groovy.json.*
 
 void getJenkinsfileConfig() {
     def serviceConfigDirectory = "../service-config/"
