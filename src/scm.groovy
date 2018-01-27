@@ -3,7 +3,7 @@ def gitCheckout(){
         stage("checkout"){
             sh(ls -a)
 
-            checkout scm
+//            checkout scm
         }
     }
 }
