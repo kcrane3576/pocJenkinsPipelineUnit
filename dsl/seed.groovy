@@ -7,8 +7,7 @@ def getServiceConfig(String fileName){
     def pathToFile = serviceConfigPath + fileName
 
     def jsonSlurper = new JsonSlurper()
-    def reader = new BufferedReader(new InputStreamReader(new FileInputStream(pathToFile), "UTF-8"))
-    def json = jsonSlurper.parse(reader)
+    def json = jsonSlurper.parseText(new File(pathToFile).text)
     for (Object key: json) {
         println(key)
     }
