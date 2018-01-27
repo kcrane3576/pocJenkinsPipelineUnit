@@ -6,6 +6,11 @@ def getServiceConfig(String fileName){
     def serviceConfigPath = "../service-config/"
     def pathToFile = serviceConfigPath + fileName
 
+
+    //Checking current directory
+    def currentDir = new File(".").getAbsolutePath()
+    println currentDir
+
     def jsonSlurper = new JsonSlurper()
     def json = jsonSlurper.parseText(new File(pathToFile).text)
     for (Object key: json) {
