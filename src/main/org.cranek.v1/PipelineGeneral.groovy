@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-package main.org.cranek.v1
+package main.org.cranek.v1;
 
 def checkout(){
     node{
