@@ -1,9 +1,11 @@
 def gitCheckout(){
-    node{
-        stage("checkout"){
-            sh(ls -a)
+    sh(ls -a)
 
-//            checkout scm
-        }
-    }
+//    node{
+//        stage("checkout"){
+//            sh(ls -a)
+//
+////            checkout scm
+//        }
+//    }
 }
