@@ -80,8 +80,9 @@ def buildTestPipeline(pipelineConfig, service){
 //                includes('*')
 //            }
             github{
-                apiUri(service.repository)
+                repository(service.repository)
             }
+
         }
         orphanedItemStrategy{
             discardOldItems{
