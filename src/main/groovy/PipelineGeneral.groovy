@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-package main.groovy.com.mycompany.mypipeline;
+package main.groovy.mypipeline;
 
 def checkout(){
     node{
