@@ -35,7 +35,7 @@ def checkout(){
         stage("checkout"){
             checkout scm
             sh('ls -a')
-            copyGlobalLibraryScript("service-config/general.json")
+            copyGlobalLibraryScript("resources/service-config/general.json")
         }
     }
 }
