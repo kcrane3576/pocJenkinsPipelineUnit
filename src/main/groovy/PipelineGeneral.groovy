@@ -10,6 +10,7 @@ def checkout(){
             checkout scm
             sh('ls -a')
             def libResource = libraryResource "general.json"
+            println(libResource)
         }
     }
 }
