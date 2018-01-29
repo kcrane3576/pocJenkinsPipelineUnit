@@ -9,7 +9,7 @@ def checkout(){
         stage("checkout"){
             checkout scm
             sh('ls -a')
-            def libResource = libraryResource "resources/general.json"
+            def libResource = libraryResource "main/resources/general.json"
             println(libResource)
         }
     }
