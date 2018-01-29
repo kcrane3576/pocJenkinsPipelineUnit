@@ -8,8 +8,8 @@ def checkout(){
             checkout scm
             //TODO this works for top level resources directory
 //            def libResource = libraryResource "general.json"
+            def libResource = libraryResource "../../src/main/resources/general.json"
             println(libResource)
-            def libResource = libraryResource "../src/main/resources/general.json"
             sh('ls -a')
         }
     }
