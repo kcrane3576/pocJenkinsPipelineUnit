@@ -35,7 +35,7 @@ def checkout(){
         stage("checkout"){
             checkout scm
             sh('ls -a')
-            copyGlobalLibraryScript("src/main/groovy/resources/general.json")
+            copyGlobalLibraryScript("general.json")
         }
     }
 }
