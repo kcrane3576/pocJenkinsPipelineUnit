@@ -15,7 +15,7 @@ def checkout(){
     node{
         stage("checkout"){
             checkout scm
-            def libResource = libraryResource "src/main/resources/general.json"
+            def libResource = libraryResource "../src/main/resources/general.json"
             println(libResource)
 //            writeIt()
             sh('ls -a')
