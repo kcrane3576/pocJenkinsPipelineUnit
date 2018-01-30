@@ -8,8 +8,8 @@ def checkout(){
         stage("checkout"){
             checkout scm
             def general = libraryResource "service-config/general.json"
-            def system = libraryResource "service-config/ip-general.json"
-            def systemService = libraryResource "service-config/ip-service.json"
+            def system = libraryResource "service-config/ip/ip-general.json"
+            def systemService = libraryResource "service-config/ip/ip-service.json"
             def gen = readJSON text: general
             def sys = readJSON text: system
             def sysServ = readJSON text: systemService
