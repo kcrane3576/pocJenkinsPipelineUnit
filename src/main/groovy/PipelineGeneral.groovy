@@ -12,8 +12,6 @@ def checkout(){
             println(libResource)
             println(object.name)
 
-
-            println(data.name)
             sh('ls -a')
         }
     }
