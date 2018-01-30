@@ -8,11 +8,9 @@ def checkout(){
         stage("checkout"){
             checkout scm
             def libResource = libraryResource "service-config/general.json"
+            def object = readJSON text: libResource
             println(libResource)
-            def jsonSlurper = new JsonSlurperClassic()
-            assert libResource instanceof String
-            data = jsonSlurper.parseText(libResource)
-            println(data.name)
+            println(object.name)
 
 
             println(data.name)
