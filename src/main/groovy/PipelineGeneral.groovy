@@ -1,8 +1,7 @@
 #!/usr/bin/env groovy
 
 package main.groovy.mypipeline;
-
-import json
+import groovy.json.JsonSlurper
 
 def checkout(){
     node{
@@ -10,7 +9,11 @@ def checkout(){
             checkout scm
             def libResource = libraryResource "service-config/general.json"
             println(libResource)
-            def data = json.loads(libResource)
+            def jsonSlurper = new JsonSlurper()
+            data = jsonSlurper.parseText(libResource)
+            println(data.name)
+
+
             println(data.name)
             sh('ls -a')
         }
