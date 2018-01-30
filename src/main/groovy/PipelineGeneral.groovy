@@ -37,7 +37,7 @@ def combineJson(gen, sys, sysServ){
     def sysKeys = sys.keySet()
     def sysServKeys = sysServ.keySet()
 
-    for(int i = 0; i < genKeys.length; i++){
+    for(int i = 0; i < genKeys.size(); i++){
         if(sysServKeys[i].equals(genKeys[i])){
             jenkinsfileConfig[sysServKeys[i]] = sys.sysServKeys[i]
         }
