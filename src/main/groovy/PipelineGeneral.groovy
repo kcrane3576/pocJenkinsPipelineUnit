@@ -33,9 +33,17 @@ def combineJson(gen, sys, sysServ){
 
     def jenkinsfileConfig = [:]
 
-    println(gen.keySet())
+    def genKeys = gen.keySet()
+    def sysKeys = sys.keySet()
+    def sysServKeys = sysServ.keySet()
 
-    gen.each { key, value ->
+    for(int i = 0; i < len(genKeys); i++){
+        if(sysServKeys[i].equals(genKeys[i])){
+            jenkinsfileConfig[sysServKeys[i]] = sys.sysServKeys[i]
+        }
+    }
+
+    jenkinsfileConfig.each { key, value ->
         println("${key}:${value}")
 
     }
