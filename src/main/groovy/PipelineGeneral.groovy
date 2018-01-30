@@ -10,6 +10,7 @@ def checkout(){
             def libResource = libraryResource "service-config/general.json"
             println(libResource)
             def jsonSlurper = new JsonSlurper()
+            assert libResource instanceof String
             data = jsonSlurper.parseText(libResource)
             println(data.name)
 
