@@ -9,6 +9,7 @@ def checkout(){
             checkout scm
             def libResource = libraryResource "service-config/general.json"
             println(libResource)
+            println(libResource.name)
             def jsonSlurper = new JsonSlurper()
             assert libResource instanceof String
             data = jsonSlurper.parseText(libResource)
