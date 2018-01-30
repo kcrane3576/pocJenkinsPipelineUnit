@@ -19,6 +19,7 @@ def checkout(){
             println(gen.name)
             println(sys.name)
             println(sysServ.name)
+            combineJson(gen, sys, sysServ)
 
 //            sh('ls -a')
 
@@ -27,3 +28,14 @@ def checkout(){
     }
 }
 
+
+def combineJson(gen, sys, sysServ){
+
+    def jenkinsfileConfig = [:]
+
+    gen.each { key, value ->
+        println("${key}:${value}")
+
+    }
+
+}
