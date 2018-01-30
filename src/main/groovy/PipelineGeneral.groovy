@@ -33,6 +33,8 @@ def combineJson(gen, sys, sysServ){
 
     def jenkinsfileConfig = [:]
 
+    println(gen.keySet())
+
     gen.each { key, value ->
         println("${key}:${value}")
 
