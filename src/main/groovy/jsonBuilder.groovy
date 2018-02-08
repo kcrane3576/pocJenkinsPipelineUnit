@@ -5,7 +5,7 @@ def getJenkinsfileConfig(serviceName){
     def system = getSystem(serviceName)
     def json = getJson(serviceName, system)
 
-    println(json)
+    //TODO return merged json to be used within the pipeline
 
 }
 
@@ -16,7 +16,6 @@ def getSystem(serviceName){
 }
 
 def getJson(serviceName, system){
-
     def filePaths = getFilePaths(serviceName, system)
 
     def defaultJson = libraryResource filePaths.get("default")
@@ -26,9 +25,10 @@ def getJson(serviceName, system){
     println(defaultJson)
     println(systemJson)
     println(serviceJson)
+    
+    //TODO merge json
 
 }
-
 
 def getFilePaths(serviceName, system){
     def filePaths = [:]
