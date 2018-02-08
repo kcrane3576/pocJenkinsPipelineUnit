@@ -47,7 +47,7 @@ def getFilePaths(serviceName, system){
 //            .append(jsonFormat)
 //            .toString()
 
-    def defaultFilePath = serviceConfig + "/default/" + jsonFormat
+    def defaultFilePath = serviceConfig + "/default" + jsonFormat
 
     //builds the system file path
 //    def systemFilePath = new StringBuilder()
