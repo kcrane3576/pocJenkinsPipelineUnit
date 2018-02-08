@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-package main.groovy.mypipeline;
+package main.groovy;
 
 def checkout(serviceName){
     node{
@@ -13,7 +13,7 @@ def checkout(serviceName){
 
 //            combineJson(gen, sys, sysServ)
 
-            println("sanity check")
+            println(serviceName)
 
 //            jsonBuilder.getJenkinsfileConfig(serviceName)
 
