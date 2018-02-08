@@ -18,6 +18,9 @@ def getSystem(serviceName){
 def getJson(serviceName, system){
     def filePaths = getFilePaths(serviceName, system)
 
+    def resource = new main.groovy.fileLoader()
+    resource.getLibraryResource(filePaths.get("default"))
+
     def defaultJson = libraryResource filePaths.get("default")
     def systemJson = libraryResource filePaths.get("system")
     def serviceJson = libraryResource filePaths.get("service")
