@@ -1,8 +1,9 @@
 package main.groovy
 
 def getLibraryResource(pathToFile){
+    def result
     try{
-        def result = libraryResource pathToFile
+        result = libraryResource pathToFile
     }catch(Exception e){
         error("Unable to load file: " + pathToFile)
     }
