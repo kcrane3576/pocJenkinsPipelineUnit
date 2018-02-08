@@ -13,7 +13,9 @@ def checkout(serviceName){
 
 //            combineJson(gen, sys, sysServ)
 
-            jsonBuilder.getJenkinsfileConfig(serviceName)
+            println("sanity check")
+
+//            jsonBuilder.getJenkinsfileConfig(serviceName)
 
 
         }
