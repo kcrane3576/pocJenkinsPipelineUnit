@@ -1,8 +1,9 @@
 package main.groovy
 
 
-//retrieve 1 json configuration from 3 sources
-//set up to have service specific configuration take precedence over system and default configuration
+// retrieve 1 json configuration from 3 sources
+// set up to have 'service' configuration take precedence over 'system'
+// and 'system' take precedence over 'default'
 def getJenkinsfileConfig(serviceName){
     def system = getSystem(serviceName)
     def json = getJson(serviceName, system)
