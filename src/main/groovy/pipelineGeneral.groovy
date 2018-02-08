@@ -13,9 +13,8 @@ def checkout(String serviceName){
 
 //            combineJson(gen, sys, sysServ)
 
-            println(serviceName)
 
-//            jsonBuilder.getJenkinsfileConfig(serviceName)
+            jsonBuilder.getJenkinsfileConfig(serviceName)
 
 
         }
