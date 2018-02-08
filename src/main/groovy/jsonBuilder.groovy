@@ -19,11 +19,6 @@ def getJson(serviceName, system){
 
     def filePaths = getFilePaths(serviceName, system)
 
-
-//    def service = libraryResource "service-config/service.json"
-//    def ip = libraryResource "service-config/ip/ip.json"
-//    def ipService1 = libraryResource "service-config/ip/ip-service.json"
-
     def defaultJson = libraryResource filePaths.get("default")
     def systemJson = libraryResource filePaths.get("system")
     def serviceJson = libraryResource filePaths.get("service")
@@ -33,6 +28,7 @@ def getJson(serviceName, system){
     println(serviceJson)
 
 }
+
 
 def getFilePaths(serviceName, system){
     def filePaths = [:]

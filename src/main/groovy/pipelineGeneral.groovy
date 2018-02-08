@@ -9,8 +9,6 @@ def checkout(String serviceName){
 
             def jsonBuilder = new main.groovy.jsonBuilder()
             jsonBuilder.getJenkinsfileConfig(serviceName)
-
-
         }
     }
 }
