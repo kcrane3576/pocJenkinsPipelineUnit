@@ -2,7 +2,7 @@
 
 package main.groovy;
 
-def checkout(serviceName){
+def checkout(def serviceName){
     node{
         stage("checkout"){
             checkout scm
