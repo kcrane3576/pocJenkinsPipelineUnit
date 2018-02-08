@@ -5,7 +5,7 @@ def getLibraryResource(pathToFile){
     try{
         result = libraryResource pathToFile
     }catch(Exception e){
-        error("Unable to load file: " + pathToFile)
+        error("Unable to load: " + pathToFile)
     }
 
     return result
