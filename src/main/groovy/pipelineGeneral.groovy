@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-package main.groovy;
+package main.groovy
 
 def getJsonBuilder(){
 //    def slurper = new ConfigSlurper()
@@ -10,7 +10,7 @@ def getJsonBuilder(){
 
     sh("ls -a")
 
-    return config.pipelineConfig
+//    return config.pipelineConfig
 }
 
 def checkout(String serviceName){
@@ -24,7 +24,7 @@ def checkout(String serviceName){
 
 //            combineJson(gen, sys, sysServ)
 
-            getJsonBuilder()
+            def jsonBuilder = new main.groovy.jsonBuilder()
 
             jsonBuilder.getJenkinsfileConfig(serviceName)
 

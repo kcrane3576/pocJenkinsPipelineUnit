@@ -1,4 +1,6 @@
 
+package main.groovy
+
 def DEFAULT = "default"
 def SERVICE_CONFIG = "service-config"
 def JSON_FORMAT = ".json"
