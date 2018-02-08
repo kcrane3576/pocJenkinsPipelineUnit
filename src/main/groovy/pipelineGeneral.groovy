@@ -3,10 +3,10 @@
 package main.groovy;
 
 def getJsonBuilder(){
-    def slurper = new ConfigSlurper()
-    def workspacePath = "${new File(__FILE__).parent}"
-    def pipelineConfigPath = workspacePath + "/jsonBuilder.groovy"
-    def config = slurper.parse(readFileFromWorkspace(pipelineConfigPath))
+//    def slurper = new ConfigSlurper()
+//    def workspacePath = "${new File(__FILE__).parent}"
+//    def pipelineConfigPath = workspacePath + "/jsonBuilder.groovy"
+//    def config = slurper.parse(readFileFromWorkspace(pipelineConfigPath))
 
     sh("ls -a")
 
@@ -24,6 +24,7 @@ def checkout(String serviceName){
 
 //            combineJson(gen, sys, sysServ)
 
+            getJsonBuilder()
 
             jsonBuilder.getJenkinsfileConfig(serviceName)
 
