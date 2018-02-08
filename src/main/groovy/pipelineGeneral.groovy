@@ -2,6 +2,17 @@
 
 package main.groovy;
 
+def getJsonBuilder(){
+    def slurper = new ConfigSlurper()
+    def workspacePath = "${new File(__FILE__).parent}"
+    def pipelineConfigPath = workspacePath + "/jsonBuilder.groovy"
+    def config = slurper.parse(readFileFromWorkspace(pipelineConfigPath))
+
+    sh("ls -a")
+
+    return config.pipelineConfig
+}
+
 def checkout(String serviceName){
     node{
         stage("checkout"){

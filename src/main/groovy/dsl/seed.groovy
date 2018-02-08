@@ -4,7 +4,7 @@ def getPipelineConfig(){
 
     def slurper = new ConfigSlurper()
     def workspacePath = "${new File(__FILE__).parent}"
-    def pipelineConfigPath = workspacePath + "/pipeline-config.groovy"
+    def pipelineConfigPath = workspacePath + "/pipelineConfig.groovy"
     def config = slurper.parse(readFileFromWorkspace(pipelineConfigPath))
 
     return config.pipelineConfig
