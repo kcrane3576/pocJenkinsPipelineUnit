@@ -1,6 +1,8 @@
-
 package main.groovy
 
+
+//retrieve 1 json configuration from 3 sources
+//set up to have service specific configuration take precedence over system and default configuration
 def getJenkinsfileConfig(serviceName){
     def system = getSystem(serviceName)
     def json = getJson(serviceName, system)
@@ -35,13 +37,13 @@ def getFilePaths(serviceName, system){
     def serviceConfig = "service-config"
     def jsonFormat = ".json"
 
-    //builds the default file path
+    //default file path
     def defaultFilePath = serviceConfig + "/default" + jsonFormat
 
-    //builds the system file path
+    //system file path
     def systemFilePath = serviceConfig + "/" + system + "/" + system + jsonFormat
 
-    //builds the service file path
+    //service file path
     def serviceFilePath = serviceConfig + "/" + system + "/" +serviceName + jsonFormat
 
     filePaths.put("default", defaultFilePath)
@@ -52,12 +54,13 @@ def getFilePaths(serviceName, system){
 }
 
 
-//TODO WORKING
+//TODO IN DEVELOPMENT
 def combineJson2(dominant, recessive){
     def dominantKeys = dominant.keySet()
     def recessiveKeys = recessive.keySet()
 }
 
+//TODO IN DEVELOPMENT
 def combineJson(gen, sys, sysServ){
 
     def jenkinsfileConfig = [:]
