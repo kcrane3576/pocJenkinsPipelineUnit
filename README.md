@@ -4,6 +4,6 @@
 
 @Library("jenkinsfiles") _
 
-def pipeline = new main.groovy.PipelineGeneral()
-pipeline.checkout()
+def pipeline = new main.groovy.pipelineGeneral()
+pipeline.checkout(serviceName)
 ```
