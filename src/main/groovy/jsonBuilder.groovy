@@ -40,34 +40,38 @@ def getFilePaths(serviceName, system){
     def jsonFormat = ".json"
 
     //builds the default file path
-    def defaultFilePath = new StringBuilder()
-            .append(serviceConfig)
-            .append("/")
-            .append("default")
-            .append(jsonFormat)
-            .toString()
+//    def defaultFilePath = new StringBuilder()
+//            .append(serviceConfig)
+//            .append("/")
+//            .append("default")
+//            .append(jsonFormat)
+//            .toString()
+
+    def defaultFilePath = serviceConfig + "/default/" + jsonForma
 
     //builds the system file path
-    def systemFilePath = new StringBuilder()
-            .append(serviceConfig)
-            .append("/")
-            .append(system)
-            .append("/")
-            .append(system)
-            .append(jsonFormat)
-            .toString()
+//    def systemFilePath = new StringBuilder()
+//            .append(serviceConfig)
+//            .append("/")
+//            .append(system)
+//            .append("/")
+//            .append(system)
+//            .append(jsonFormat)
+//            .toString()
+
+    def systemFilePath = serviceConfig + "/" + system + "/" + system + jsonFormat
 
     //builds the service file path
-    def serviceFilePath = new StringBuilder()
-            .append(serviceConfig)
-            .append("/")
-            .append(system)
-            .append("/")
-            .append(serviceName)
-            .append(jsonFormat)
-            .toString()
+//    def serviceFilePath = new StringBuilder()
+//            .append(serviceConfig)
+//            .append("/")
+//            .append(system)
+//            .append("/")
+//            .append(serviceName)
+//            .append(jsonFormat)
+//            .toString()
 
-    println(serviceFilePath)
+    def serviceFilePath = serviceConfig + "/" + system + "/" +serviceName + jsonFormat
 
     filePaths.put("default", defaultFilePath)
     filePaths.put("system", systemFilePath)
