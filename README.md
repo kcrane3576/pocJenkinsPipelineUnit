@@ -1,4 +1,4 @@
-# Setting up Jenkinsfile in the service that will be using a shared library
+# Setting up Jenkinsfile in the service that uses this shared library
 ```groovy
 #!/usr/bin/env groovy
 
