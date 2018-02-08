@@ -1,3 +1,6 @@
 {
-  "name":"default.json"
+  "name":"default.json",
+  "obj":{
+    "id":"default"
+  }
 }

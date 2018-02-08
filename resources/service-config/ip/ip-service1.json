@@ -1,3 +1,6 @@
 {
-  "name":"ip-service1.json"
+  "name":"ip-service1.json",
+  "obj":{
+    "id":"ip-service1"
+  }
 }

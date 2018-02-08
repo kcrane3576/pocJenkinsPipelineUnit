@@ -1,3 +1,6 @@
 {
-  "name":"ip.json"
+  "name":"ip.json",
+  "obj":{
+    "id":"ip"
+  }
 }
