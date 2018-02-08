@@ -5,7 +5,7 @@ def JSON_FORMAT = ".json"
 
 def getJenkinsfileConfig(serviceName){
     def system = getSystem(serviceName)
-    def json = getJson()
+    def json = getJson(serviceName, systemm)
 
 }
 
