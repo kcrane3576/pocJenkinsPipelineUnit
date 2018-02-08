@@ -33,6 +33,7 @@ pipelineConfig {
     }
     services {
         micro1 {
+            service "ip-service1"
             jobName = "pocMonolith"
             testName = "pocMonolith-test"
             repository = "https://github.com/kcrane3576/pocMonolith.git"

@@ -1,33 +1,39 @@
 #!/usr/bin/env groovy
 
 package main.groovy.mypipeline;
-import groovy.json.JsonSlurperClassic
 
-def checkout(){
+def checkout(serviceName){
     node{
         stage("checkout"){
             checkout scm
-            def general = libraryResource "service-config/general.json"
-            def system = libraryResource "service-config/ip/ip-general.json"
-            def systemService = libraryResource "service-config/ip/ip-service.json"
-            def gen = readJSON text: general
-            def sys = readJSON text: system
-            def sysServ = readJSON text: systemService
 
-//            println(general)
-//            println(object.name)
-            println(gen.name)
-            println(sys.name)
-            println(sysServ.name)
-            combineJson(gen, sys, sysServ)
+//            def service = libraryResource "service-config/service.json"
+//            def ip = libraryResource "service-config/ip/ip.json"
+//            def ipService1 = libraryResource "service-config/ip/ip-service.json"
 
-//            sh('ls -a')
+//            combineJson(gen, sys, sysServ)
+
+            jsonBuilder.getJenkinsfileConfig(serviceName)
 
 
         }
     }
 }
 
+def getSystem(serviceName){
+
+}
+
+def getJenkinsfileConfig(json){
+
+}
+
+def combineJson2(dominant, recessive){
+
+    def dominantKeys = dominant.keySet()
+    def recessiveKeys = recessive.keySet()
+
+}
 
 def combineJson(gen, sys, sysServ){
 
