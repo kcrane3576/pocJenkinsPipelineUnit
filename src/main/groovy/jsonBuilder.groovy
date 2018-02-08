@@ -19,8 +19,8 @@ def getJson(serviceName, system){
 
     def fileLoader = new main.groovy.fileLoader()
     def defaultJson = fileLoader.getLibraryResource(filePaths.get("default"))
-    def systemJson = libraryResource filePaths.get("system")
-    def serviceJson = libraryResource filePaths.get("service")
+    def systemJson =  fileLoader.getLibraryResource(filePaths.get("system"))
+    def serviceJson =  fileLoader.getLibraryResource(filePaths.get("service"))
 
     println(defaultJson)
     println(systemJson)
