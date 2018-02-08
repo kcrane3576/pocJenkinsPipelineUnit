@@ -37,15 +37,12 @@ def getFilePaths(serviceName, system){
     def serviceConfig = "service-config"
     def jsonFormat = ".json"
 
-    //default file path
     def defaultFilePath = serviceConfig + "/default" + jsonFormat
     filePaths.put("default", defaultFilePath)
 
-    //system file path
     def systemFilePath = serviceConfig + "/" + system + "/" + system + jsonFormat
     filePaths.put("system", systemFilePath)
 
-    //service file path
     def serviceFilePath = serviceConfig + "/" + system + "/" +serviceName + jsonFormat
     filePaths.put("service", serviceFilePath)
 
