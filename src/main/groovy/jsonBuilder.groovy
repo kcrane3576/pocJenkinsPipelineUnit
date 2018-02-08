@@ -6,7 +6,6 @@ def getJenkinsfileConfig(serviceName){
     def json = getJson(serviceName, system)
 
     //TODO return merged json to be used within the pipeline
-
 }
 
 def getSystem(serviceName){
@@ -19,9 +18,7 @@ def getJson(serviceName, system){
     def filePaths = getFilePaths(serviceName, system)
 
     def fileLoader = new main.groovy.fileLoader()
-    fileLoader.getLibraryResource(filePaths.get("default"))
-
-    def defaultJson = libraryResource filePaths.get("default")
+    def defaultJson = fileLoader.getLibraryResource(filePaths.get("default"))
     def systemJson = libraryResource filePaths.get("system")
     def serviceJson = libraryResource filePaths.get("service")
 
@@ -30,7 +27,6 @@ def getJson(serviceName, system){
     println(serviceJson)
     
     //TODO merge json
-
 }
 
 def getFilePaths(serviceName, system){
@@ -40,37 +36,12 @@ def getFilePaths(serviceName, system){
     def jsonFormat = ".json"
 
     //builds the default file path
-//    def defaultFilePath = new StringBuilder()
-//            .append(serviceConfig)
-//            .append("/")
-//            .append("default")
-//            .append(jsonFormat)
-//            .toString()
-
     def defaultFilePath = serviceConfig + "/default" + jsonFormat
 
     //builds the system file path
-//    def systemFilePath = new StringBuilder()
-//            .append(serviceConfig)
-//            .append("/")
-//            .append(system)
-//            .append("/")
-//            .append(system)
-//            .append(jsonFormat)
-//            .toString()
-
     def systemFilePath = serviceConfig + "/" + system + "/" + system + jsonFormat
 
     //builds the service file path
-//    def serviceFilePath = new StringBuilder()
-//            .append(serviceConfig)
-//            .append("/")
-//            .append(system)
-//            .append("/")
-//            .append(serviceName)
-//            .append(jsonFormat)
-//            .toString()
-
     def serviceFilePath = serviceConfig + "/" + system + "/" +serviceName + jsonFormat
 
     filePaths.put("default", defaultFilePath)
@@ -80,11 +51,11 @@ def getFilePaths(serviceName, system){
     return filePaths
 }
 
-def combineJson2(dominant, recessive){
 
+//TODO WORKING
+def combineJson2(dominant, recessive){
     def dominantKeys = dominant.keySet()
     def recessiveKeys = recessive.keySet()
-
 }
 
 def combineJson(gen, sys, sysServ){
