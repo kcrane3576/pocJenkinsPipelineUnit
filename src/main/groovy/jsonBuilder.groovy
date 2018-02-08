@@ -68,6 +68,8 @@ def getFilePaths(serviceName, system){
             .append(jsonFormat)
             .toString()
 
+    println(serviceFilePath)
+
     filePaths.put("default", defaultFilePath)
     filePaths.put("system", systemFilePath)
     filePaths.put("service", serviceFilePath)
