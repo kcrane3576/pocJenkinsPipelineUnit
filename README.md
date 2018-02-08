@@ -7,7 +7,7 @@
 def pipeline = new main.groovy.pipelineGeneral()
 
 //expected pattern (sytem-service)
-def serviceName = "poc-jhipster"
+def serviceName = "ip-service1"
 
 pipeline.checkout(serviceName)
 ```
