@@ -2,5 +2,8 @@
   "name":"default.json",
   "obj":{
     "id":"default"
+  },
+  "env":{
+    "vpc":"vpc"
   }
 }
