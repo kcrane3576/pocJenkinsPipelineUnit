@@ -33,8 +33,8 @@ def getJson(serviceName, system){
     println(serviceJson)
     
     //TODO merge json
-    def result = combineJson2(systemJson, defaultJson)
     println("====================================")
+    def result = combineJson2(systemJson, defaultJson)
     print(result)
     println(result.name)
     println(result.obj)
