@@ -32,8 +32,8 @@ def getJson(serviceName, system){
     println(systemJson)
     println(serviceJson)
 
-    println(dominant.getClass())
-    println(recessive.getClass())
+    println(systemJson.getClass())
+    println(defaultJson.getClass())
     
     //TODO merge json
     combineJson2(systemJson, defaultJson)
