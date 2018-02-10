@@ -1,5 +1,7 @@
 package main.groovy
 
+import groovy.json.JsonSlurperClassic
+
 
 // retrieve 1 json configuration from 3 sources
 // - 'service' takes precedence over 'system'
@@ -21,9 +23,10 @@ def getJson(serviceName, system){
     def filePaths = getFilePaths(serviceName, system)
 
     def fileLoader = new main.groovy.fileLoader()
-    def defaultJson = fileLoader.getLibraryResource(filePaths.get("default"))
-    def systemJson =  fileLoader.getLibraryResource(filePaths.get("system"))
-    def serviceJson =  fileLoader.getLibraryResource(filePaths.get("service"))
+    def jsonSlurperClassic = new JsonSlurperClassic()
+    def defaultJson = jsonSlurperClassic.parseText(fileLoader.getLibraryResource(filePaths.get("default")))
+    def systemJson =  jsonSlurperClassic.parseText(fileLoader.getLibraryResource(filePaths.get("system")))
+    def serviceJson =  jsonSlurperClassic.parseText(fileLoader.getLibraryResource(filePaths.get("service")))
 
     println(defaultJson)
     println(systemJson)
