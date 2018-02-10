@@ -31,6 +31,9 @@ def getJson(serviceName, system){
     println(defaultJson)
     println(systemJson)
     println(serviceJson)
+
+    println(dominant.getClass())
+    println(recessive.getClass())
     
     //TODO merge json
     combineJson2(systemJson, defaultJson)
@@ -58,9 +61,6 @@ def getFilePaths(serviceName, system){
 //TODO IN DEVELOPMENT
 def combineJson2(dominant, recessive){
     def result = [:]
-
-    println(dominant.getClass())
-    println(recessive.getClass())
 
     dominant.each{ dKey, dValue ->
 
