@@ -36,7 +36,12 @@ def getJson(serviceName, system){
     println(defaultJson.getClass())
     
     //TODO merge json
-    combineJson2(systemJson, defaultJson)
+    def result = combineJson2(systemJson, defaultJson)
+    println("====================================")
+    print(result)
+    println(result.name)
+    println(result.obj)
+    println(result.obj.id)
 }
 
 def getFilePaths(serviceName, system){
@@ -80,11 +85,6 @@ def combineJson2(dominant, recessive){
             result.put(dKey, dValue)
         }
     }
-    println("====================================")
-    print(result)
-    println(result.name)
-    println(result.obj)
-    println(result.obj.id)
 }
 
 //TODO IN DEVELOPMENT
