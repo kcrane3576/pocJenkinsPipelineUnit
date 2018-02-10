@@ -31,9 +31,6 @@ def getJson(serviceName, system){
     println(defaultJson)
     println(systemJson)
     println(serviceJson)
-
-    println(systemJson.getClass())
-    println(defaultJson.getClass())
     
     //TODO merge json
     def result = combineJson2(systemJson, defaultJson)
@@ -85,7 +82,10 @@ def combineJson2(dominant, recessive){
             result.put(dKey, dValue)
         }
 
-        result.putAll(recessive)
+
+        if(recessive.size() != 0){
+            println(recessive)
+        }
     }
 
     return result
