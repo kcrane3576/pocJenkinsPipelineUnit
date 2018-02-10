@@ -79,16 +79,12 @@ def combineJson2(dominant, recessive){
         }else{
             result.put(dKey, dValue)
         }
-
-
-        println("====================================")
-        print(result)
-        println(result.name)
-        println(result.obj)
-        println(result.obj.id)
-
-
     }
+    println("====================================")
+    print(result)
+    println(result.name)
+    println(result.obj)
+    println(result.obj.id)
 }
 
 //TODO IN DEVELOPMENT
