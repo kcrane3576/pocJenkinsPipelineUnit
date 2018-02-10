@@ -59,6 +59,9 @@ def getFilePaths(serviceName, system){
 def combineJson2(dominant, recessive){
     def result = [:]
 
+    println(dominant.getClass())
+    println(recessive.getClass())
+
     dominant.each{ dKey, dValue ->
 
         def rValue = recessive.get(dKey)
