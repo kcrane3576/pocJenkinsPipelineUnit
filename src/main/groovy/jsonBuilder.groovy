@@ -24,9 +24,9 @@ def getJson(serviceName, system){
 
     def fileLoader = new main.groovy.fileLoader()
     def jsonSlurperClassic = new JsonSlurperClassic()
-    def defaultJson = jsonSlurperClassic.parseText(fileLoader.getLibraryResource(filePaths.get("default")))
-    def systemJson =  jsonSlurperClassic.parseText(fileLoader.getLibraryResource(filePaths.get("system")))
-    def serviceJson =  jsonSlurperClassic.parseText(fileLoader.getLibraryResource(filePaths.get("service")))
+    def defaultJson = jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("default")))
+    def systemJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("system")))
+    def serviceJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("service")))
 
     println(defaultJson)
     println(systemJson)
