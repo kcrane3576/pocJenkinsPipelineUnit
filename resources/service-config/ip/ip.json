@@ -2,5 +2,8 @@
   "name":"ip.json",
   "obj":{
     "id":"ip"
+  },
+  "env":{
+    "splunk":"splunk"
   }
 }
