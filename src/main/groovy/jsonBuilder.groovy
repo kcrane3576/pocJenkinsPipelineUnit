@@ -71,7 +71,7 @@ def combineJson2(dominant, recessive){
 
             if(rValue instanceof HashMap){
 //                result += combineJson2(dValue, rValue)
-                result.putAll(combineJson2(dValue, rValue))
+                result.put(dKey, combineJson2(dValue, rValue))
             }else{
                 result.put(dKey, dValue)
             }
