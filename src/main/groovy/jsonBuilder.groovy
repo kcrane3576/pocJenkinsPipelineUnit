@@ -54,8 +54,6 @@ def getFilePaths(serviceName, system){
 
 //TODO IN DEVELOPMENT
 def combineJson2(dominant, recessive){
-    def dominantKeys = dominant.keySet()
-    def recessiveKeys = recessive.keySet()
     def result = [:]
 
     dominant.each{ dKey, dValue ->
@@ -81,23 +79,23 @@ def combineJson2(dominant, recessive){
 }
 
 //TODO IN DEVELOPMENT
-def combineJson(gen, sys, sysServ){
-
-    def jenkinsfileConfig = [:]
-
-    def genKeys = gen.keySet()
-    def sysKeys = sys.keySet()
-    def sysServKeys = sysServ.keySet()
-
-    for(int i = 0; i < genKeys.size(); i++){
-        if(sysServKeys[i].equals(genKeys[i])){
-            jenkinsfileConfig[sysServKeys[i]] = sys.sysServKeys[i]
-        }
-    }
-
-    jenkinsfileConfig.each { key, value ->
-        println("${key}:${value}")
-
-    }
-
-}
+//def combineJson(gen, sys, sysServ){
+//
+//    def jenkinsfileConfig = [:]
+//
+//    def genKeys = gen.keySet()
+//    def sysKeys = sys.keySet()
+//    def sysServKeys = sysServ.keySet()
+//
+//    for(int i = 0; i < genKeys.size(); i++){
+//        if(sysServKeys[i].equals(genKeys[i])){
+//            jenkinsfileConfig[sysServKeys[i]] = sys.sysServKeys[i]
+//        }
+//    }
+//
+//    jenkinsfileConfig.each { key, value ->
+//        println("${key}:${value}")
+//
+//    }
+//
+//}
