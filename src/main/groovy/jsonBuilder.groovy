@@ -87,6 +87,8 @@ def combineJson2(dominant, recessive){
 
         result.putAll(recessive)
     }
+
+    return result
 }
 
 //TODO IN DEVELOPMENT
