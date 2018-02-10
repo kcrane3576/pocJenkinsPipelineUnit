@@ -70,8 +70,10 @@ def combineJson2(dominant, recessive){
         if(rValue != null){
 
             if(rValue instanceof HashMap){
+                def recursiveResult = [:]
 //                result += combineJson2(dValue, rValue)
-                result.put(dKey, combineJson2(dValue, rValue))
+                recursiveResult.put(dKey, combineJson2(dValue, rValue))
+                result.putAll(recursiveResult)
             }else{
                 result.put(dKey, dValue)
             }
