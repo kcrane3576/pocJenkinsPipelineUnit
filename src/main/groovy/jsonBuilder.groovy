@@ -55,6 +55,25 @@ def getFilePaths(serviceName, system){
 def combineJson2(dominant, recessive){
     def dominantKeys = dominant.keySet()
     def recessiveKeys = recessive.keySet()
+    def result = [:]
+
+    dominant.each{ dKey, dValue ->
+
+        def rValue = recessive.get(dKey)
+
+        if(rValue != null){
+
+            if(rValue instanceof HashMap){
+                combineJson2(dValue, dKey)
+            }else{
+                result.put(dKey, dValue)
+            }
+        }else{
+            result.put(dKey, dValue)
+        }
+
+
+    }
 }
 
 //TODO IN DEVELOPMENT
