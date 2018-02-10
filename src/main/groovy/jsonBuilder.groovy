@@ -80,7 +80,7 @@ def combineJson2(dominant, recessive){
 
 
         println("====================================")
-//        print(result)''
+        print(result)
 
     }
 }
