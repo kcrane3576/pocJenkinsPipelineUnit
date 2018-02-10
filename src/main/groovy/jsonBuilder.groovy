@@ -30,6 +30,7 @@ def getJson(serviceName, system){
     println(serviceJson)
     
     //TODO merge json
+    combineJson2(systemJson, defaultJson)
 }
 
 def getFilePaths(serviceName, system){
