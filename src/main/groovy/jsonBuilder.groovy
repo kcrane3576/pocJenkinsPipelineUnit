@@ -71,7 +71,6 @@ def combineJson2(dominant, recessive){
 
             if(rValue instanceof HashMap){
                 def recursiveResult = [:]
-//                result += combineJson2(dValue, rValue)
                 recursiveResult.put(dKey, combineJson2(dValue, rValue))
                 result.putAll(recursiveResult)
             }else{
@@ -84,8 +83,8 @@ def combineJson2(dominant, recessive){
 
         println("====================================")
         print(result)
-        println(result.obj.id)
-        println(result.name)
+//        println(result.obj.id)
+//        println(result.name)
 
     }
 }
