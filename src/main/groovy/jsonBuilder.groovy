@@ -85,6 +85,7 @@ def combineJson2(dominant, recessive){
         print(result)
         println(result.name)
         println(result.obj)
+        println(result.obj.id)
 
 
     }
