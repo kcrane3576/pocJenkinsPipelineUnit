@@ -28,7 +28,7 @@ def getJson(serviceName, system){
     def systemJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("system")))
     def serviceJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("service")))
 
-    def result = combineJson2(systemJson, defaultJson)
+    def result = combineJson(systemJson, defaultJson)
     result = combineJson2(serviceJson, result)
 
     return result
@@ -69,7 +69,7 @@ def combineJson(dominant, recessive){
                 def recursiveResult = [:]
 
                 //step into the object and repeat check for the same keys
-                recursiveResult.put(dKey, combineJson2(dValue, rValue))
+                recursiveResult.put(dKey, combineJson(dValue, rValue))
 
                 //add all the remaining key/value pairs from recursive call to the result map
                 result.putAll(recursiveResult)
