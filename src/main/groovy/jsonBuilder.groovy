@@ -10,6 +10,7 @@ def getJenkinsfileConfig(serviceName){
     def system = getSystem(serviceName)
     def json = getJson(serviceName, system)
 
+    return json
     //TODO return merged json to be used within the pipeline
 }
 
@@ -30,8 +31,6 @@ def getJson(serviceName, system){
 
     def result = combineJson(systemJson, defaultJson)
     result = combineJson(serviceJson, result)
-
-    println(result.getClass())
 
     return result
 }
