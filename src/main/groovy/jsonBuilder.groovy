@@ -71,10 +71,14 @@ def combineJson2(dominant, recessive){
 
         if(rValue != null){
             if(rValue instanceof HashMap){
+                println("dValueO:"+dominant.get(dKey))
+                println("rValueO:"+rValue)
                 def recursiveResult = [:]
                 recursiveResult.put(dKey, combineJson2(dValue, rValue))
                 result.putAll(recursiveResult)
             }else {
+                println("dValue:"+dominant.get(dKey))
+                println("rValue:"+rValue)
                 result.put(dKey, dValue)
                 recessive.remove(dKey)
             }
@@ -83,6 +87,11 @@ def combineJson2(dominant, recessive){
             result.put(dKey, dValue)
         }
 
+
+        if(recessive.size() != 0){
+            println(recessive)
+
+        }
 
         result.putAll(recessive)
     }
