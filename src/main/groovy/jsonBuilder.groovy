@@ -11,7 +11,6 @@ def getJenkinsfileConfig(serviceName){
     def json = getJson(serviceName, system)
 
     return json
-    //TODO return merged json to be used within the pipeline
 }
 
 def getSystem(serviceName){
