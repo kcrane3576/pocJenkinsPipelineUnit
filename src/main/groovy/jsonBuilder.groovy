@@ -28,19 +28,10 @@ def getJson(serviceName, system){
     def systemJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("system")))
     def serviceJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("service")))
 
-    println(defaultJson)
-    println(systemJson)
-    println(serviceJson)
-    
-    //TODO merge json
-    println("====================================")
     def result = combineJson2(systemJson, defaultJson)
-    println("====================================")
-    print(result)
-    println("*************************************")
     result = combineJson2(serviceJson, result)
-    println("*************************************")
-    print(result)
+
+    return result
 }
 
 def getFilePaths(serviceName, system){
@@ -62,59 +53,45 @@ def getFilePaths(serviceName, system){
 }
 
 
-//TODO IN DEVELOPMENT
-def combineJson2(dominant, recessive){
+def combineJson(dominant, recessive){
     def result = [:]
 
+    //loop over each element in the dominant map
     dominant.each{ dKey, dValue ->
 
         def rValue = recessive.get(dKey)
 
+        //check if the recessive object includes the same key
         if(rValue != null){
+            //check if the value of the key is a map
+            //based on how the files are structured, they will both be maps if one is
             if(rValue instanceof HashMap){
-//                println("dValueO:"+dominant.get(dKey))
-//                println("rValueO:"+rValue)
                 def recursiveResult = [:]
+
+                //step into the object and repeat check for the same keys
                 recursiveResult.put(dKey, combineJson2(dValue, rValue))
+
+                //add all the remaining key/value pairs from recursive call to the result map
                 result.putAll(recursiveResult)
-//                println("recursiveResult:"+recursiveResult)
-//                println("resultO:" +result)
+
+                //remove the overlapping key from the recessive map so the remaining map can be added to the result map
                 recessive.remove(dKey)
             }else {
-//                println("dValue:"+dominant.get(dKey))
-//                println("rValue:"+rValue)
+                //place dominant key/value in result map
                 result.put(dKey, dValue)
+
+                //remove recessive key/value from recessive map
                 recessive.remove(dKey)
             }
 
         }else{
+            //place key/value from dominant map in result map if not found in recessive map
             result.put(dKey, dValue)
         }
 
+        //add all remaining key/value pairs in recessive map to the result map
         result.putAll(recessive)
     }
 
     return result
 }
-
-//TODO IN DEVELOPMENT
-//def combineJson(gen, sys, sysServ){
-//
-//    def jenkinsfileConfig = [:]
-//
-//    def genKeys = gen.keySet()
-//    def sysKeys = sys.keySet()
-//    def sysServKeys = sysServ.keySet()
-//
-//    for(int i = 0; i < genKeys.size(); i++){
-//        if(sysServKeys[i].equals(genKeys[i])){
-//            jenkinsfileConfig[sysServKeys[i]] = sys.sysServKeys[i]
-//        }
-//    }
-//
-//    jenkinsfileConfig.each { key, value ->
-//        println("${key}:${value}")
-//
-//    }
-//
-//}
