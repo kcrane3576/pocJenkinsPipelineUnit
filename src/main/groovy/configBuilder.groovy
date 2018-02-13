@@ -8,7 +8,7 @@ import groovy.json.JsonSlurperClassic
 // - 'system' takes precedence over 'default'
 def getJenkinsfileConfig(serviceName){
     def system = getSystem(serviceName)
-    def json = getJson(serviceName, system)
+    def json = getConfig(serviceName, system)
 
     return json
 }
@@ -19,7 +19,7 @@ def getSystem(serviceName){
     return system
 }
 
-def getJson(serviceName, system){
+def getConfig(serviceName, system){
     def filePaths = getFilePaths(serviceName, system)
 
     def fileLoader = new main.groovy.fileLoader()
@@ -28,8 +28,8 @@ def getJson(serviceName, system){
     def systemJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("system")))
     def serviceJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("service")))
 
-    def result = combineJson(systemJson, defaultJson)
-    result = combineJson(serviceJson, result)
+    def result = combineConfig(systemJson, defaultJson)
+    result = combineConfig(serviceJson, result)
 
     return result
 }
@@ -53,7 +53,7 @@ def getFilePaths(serviceName, system){
 }
 
 
-def combineJson(dominant, recessive){
+def combineConfig(dominant, recessive){
     def result = [:]
 
     //loop over each element in the dominant map
@@ -69,7 +69,7 @@ def combineJson(dominant, recessive){
                 def recursiveResult = [:]
 
                 //step into the object and repeat check for the same keys
-                recursiveResult.put(dKey, combineJson(dValue, rValue))
+                recursiveResult.put(dKey, combineConfig(dValue, rValue))
 
                 //add all the remaining key/value pairs from recursive call to the result map
                 result.putAll(recursiveResult)
