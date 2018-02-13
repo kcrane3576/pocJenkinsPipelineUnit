@@ -77,7 +77,7 @@ def combineJson2(dominant, recessive){
                 recursiveResult.put(dKey, combineJson2(dValue, rValue))
                 println("recursiveResult:"+recursiveResult)
                 result.put(dKey, recursiveResult)
-                println("resultO:" result)
+                println("resultO:" +result)
             }else {
                 println("dValue:"+dominant.get(dKey))
                 println("rValue:"+rValue)
