@@ -29,7 +29,7 @@ def getJson(serviceName, system){
     def serviceJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("service")))
 
     def result = combineJson(systemJson, defaultJson)
-    result = combineJson2(serviceJson, result)
+    result = combineJson(serviceJson, result)
 
     return result
 }
