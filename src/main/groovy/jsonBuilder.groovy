@@ -31,8 +31,6 @@ def getJson(serviceName, system){
     def result = combineJson(systemJson, defaultJson)
     result = combineJson(serviceJson, result)
 
-
-    println(result)
     return result
 }
 
