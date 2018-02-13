@@ -37,6 +37,10 @@ def getJson(serviceName, system){
     def result = combineJson2(systemJson, defaultJson)
     println("====================================")
     print(result)
+    println("*************************************")
+    result = combineJson2(serviceJson, result)
+    println("*************************************")
+    print(result)
 }
 
 def getFilePaths(serviceName, system){
