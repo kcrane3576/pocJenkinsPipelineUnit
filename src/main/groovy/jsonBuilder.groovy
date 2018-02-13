@@ -84,12 +84,7 @@ def combineJson2(dominant, recessive){
         }
 
 
-        if(recessive.size() != 0){
-            println(recessive)
-
-        }
-
-        result.putAll(result)
+        result.putAll(recessive)
     }
 
     return result
