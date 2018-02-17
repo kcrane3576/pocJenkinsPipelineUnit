@@ -1,14 +1,14 @@
 #!/usr/bin/env groovy
 
 package main.groovy
+import main.groovy.configBuilder
 
 def checkout(String serviceName){
     node{
         stage("checkout"){
             checkout scm
 
-//            def configBuilder = main.groovy.configBuilder()
-            def configBuilder = load "src/main/groovy/configBuilder.groovy"
+            def configBuilder = loadScript('configBuilder.groovy')
             def jenkinsfileConfig = configBuilder.getJenkinsfileConfig(serviceName)
             println(jenkinsfileConfig)
 
