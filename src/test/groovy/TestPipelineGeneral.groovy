@@ -1,12 +1,21 @@
+import com.lesfurets.jenkins.unit.BasePipelineTest
+import org.junit.Before
+import org.junit.Test
+
+
 class TestPipelineGeneral extends BasePipelineTest {
 
     @Override
     @Before
     void setUp() throws Exception {
         helper.baseScriptRoot = 'pocJenkinsPipelineUnit'
-        helper.roots += 'src/main/groovy'
-        helper.extension = 'groovy'
+        helper.scriptRoots += 'src/main/groovy'
         super.setUp()
     }
 
+    @Test
+    void temp(){
+        println("temp")
+        def script = loadScript("pipelineGeneral.groovy")
+    }
 }
