@@ -8,7 +8,7 @@ def checkout(String serviceName){
             checkout scm
 
 //            def configBuilder = main.groovy.configBuilder()
-            def configBuilder = evaluate(new File("configBuilder.groovy"))
+            def configBuilder = evaluate(new File("./configBuilder.groovy"))
             def jenkinsfileConfig = configBuilder.getJenkinsfileConfig(serviceName)
             println(jenkinsfileConfig)
 
