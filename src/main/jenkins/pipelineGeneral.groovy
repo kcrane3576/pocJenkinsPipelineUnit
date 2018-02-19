@@ -9,7 +9,7 @@ def checkout(String serviceName){
 //            def configBuilder = new main.groovy.configBuilder()
 //            def configBuilder = loadScript('configBuilder.groovy')
 
-            def configBuilder = evaluate(readTrusted("configBuilder.groovy"))
+            def configBuilder = load("configBuilder.groovy")
 
             def jenkinsfileConfig = configBuilder.getJenkinsfileConfig(serviceName)
             println(jenkinsfileConfig)
