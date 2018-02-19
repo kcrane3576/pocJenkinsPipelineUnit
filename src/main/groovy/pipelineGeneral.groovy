@@ -8,9 +8,7 @@ def checkout(String serviceName){
         stage("checkout"){
             checkout scm
 
-//            def configBuilder = loadScript('configBuilder.groovy')
-            def rootDir = pwd()
-            def configBuilder = load "${rootDir}@script/configBuilder.groovy"
+            def configBuilder = loadScript('configBuilder.groovy')
 
             def jenkinsfileConfig = configBuilder.getJenkinsfileConfig(serviceName)
             println(jenkinsfileConfig)
