@@ -1,5 +1,3 @@
-package main.groovy
-
 import groovy.json.JsonSlurperClassic
 
 

@@ -1,5 +1,3 @@
-package main.groovy
-
 def getLibraryResource(pathToFile){
     def result
     try{
