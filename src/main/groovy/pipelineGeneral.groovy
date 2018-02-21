@@ -1,5 +1,11 @@
 package main.groovy
 
+Map<String, String> imports() {
+    [
+            configBuilder            : '/src/main/groovy/configBuilder.groovy'
+    ]
+}
+
 def checkout(String serviceName){
     node{
         stage("checkout"){

@@ -3,6 +3,13 @@ package main.groovy
 import groovy.json.JsonSlurperClassic
 
 
+Map<String, String> imports() {
+    [
+            fileLoader            : '/src/main/groovy/fileLoader.groovy'
+    ]
+}
+
+
 // retrieve 1 json configuration from 3 sources
 // - 'service' takes precedence over 'system'
 // - 'system' takes precedence over 'default'
