@@ -22,7 +22,7 @@ def getSystem(serviceName){
 def getConfig(serviceName, system){
     def filePaths = getFilePaths(serviceName, system)
 
-    def fileLoader = main.groovy.fileLoader
+//    def fileLoader = main.groovy.fileLoader
     def jsonSlurperClassic = new JsonSlurperClassic()
     def defaultJson = jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("default")))
     def systemJson =  jsonSlurperClassic.parseText((String) fileLoader.getLibraryResource(filePaths.get("system")))

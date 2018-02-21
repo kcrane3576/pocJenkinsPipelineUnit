@@ -5,7 +5,7 @@ def checkout(String serviceName){
         stage("checkout"){
             checkout scm
 
-            def configBuilder = main.groovy.configBuilder
+//            def configBuilder = main.groovy.configBuilder
 
             def jenkinsfileConfig = configBuilder.getJenkinsfileConfig(serviceName)
             println(jenkinsfileConfig)
