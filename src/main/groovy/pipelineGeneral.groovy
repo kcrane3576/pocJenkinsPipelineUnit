@@ -24,3 +24,5 @@ def checkout(String serviceName){
         }
     }
 }
+
+return this

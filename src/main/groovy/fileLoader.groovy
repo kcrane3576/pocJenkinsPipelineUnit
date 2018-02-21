@@ -10,3 +10,5 @@ def getLibraryResource(pathToFile){
 
     return result
 }
+
+return this

@@ -102,3 +102,5 @@ def combineConfig(dominant, recessive){
 
     return result
 }
+
+return this
