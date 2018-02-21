@@ -1,6 +1,6 @@
 Map<String, String> imports() {
     [
-            configBuilder            : '/src/main/groovy/configBuilder.groovy'
+            configBuilder            : 'src/main/groovy/configBuilder.groovy'
     ]
 }
 

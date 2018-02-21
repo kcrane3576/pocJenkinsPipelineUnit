@@ -3,7 +3,7 @@ import groovy.json.JsonSlurperClassic
 
 Map<String, String> imports() {
     [
-            fileLoader            : '/src/main/groovy/fileLoader.groovy'
+            fileLoader            : 'src/main/groovy/fileLoader.groovy'
     ]
 }
 
