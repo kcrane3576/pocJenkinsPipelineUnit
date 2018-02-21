@@ -1,4 +1,3 @@
-#!/usr/bin/env groovy
 package main.groovy
 
 def checkout(String serviceName){
@@ -6,7 +5,7 @@ def checkout(String serviceName){
         stage("checkout"){
             checkout scm
 
-            def configBuilder = new main.groovy.configBuilder()
+            def configBuilder = main.groovy.configBuilder()
 
             def jenkinsfileConfig = configBuilder.getJenkinsfileConfig(serviceName)
             println(jenkinsfileConfig)
